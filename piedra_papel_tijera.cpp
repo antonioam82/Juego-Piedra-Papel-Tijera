@@ -2,6 +2,8 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <cctype>
+#include <string>
 
 using namespace std;
 
@@ -17,6 +19,13 @@ string computerOption(){
     string palabraAleatoria = palabras[indiceAleatorio];
 
     return palabraAleatoria;
+}
+
+string convertToLower(string word){
+    for (char &caracter : word){
+        caracter = tolower(caracter);
+    };
+    return word;
 }
 
 bool included(string elemento){
@@ -45,7 +54,8 @@ int main()
     string opcion;
     string opcion_compu;
 
-    opcion = enterOption();
+    //opcion = enterOption();
+    opcion = convertToLower(enterOption());
     inclu = included(opcion);
     opcion_compu = computerOption();
 
