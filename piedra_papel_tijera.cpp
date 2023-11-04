@@ -48,17 +48,30 @@ string enterOption(){
     return option;
 }
 
+bool conti(){
+    string c;
+    cout << "Desea continuar?: "; cin >> c;
+    if(c == "Y"){
+        return true;
+    }else{
+        cout << "BYE, BYE..." << endl;
+        return false;
+    };
+}
+
 int main()
 {
     bool inclu;
     string opcion;
     string opcion_compu;
+    bool continuar = true;
 
     //opcion = enterOption();
+    while(continuar == true){
+    cout << "-----------|JUGANDO A PIEDRA, PAPEL, TIJERA|-----------\n" << endl;
     opcion = convertToLower(enterOption());
     inclu = included(opcion);
     opcion_compu = computerOption();
-
     if(inclu == true){
         cout << "TU OPCION: " << opcion << endl;
         cout << "OPCION COMPU: " << opcion_compu << endl;
@@ -81,6 +94,8 @@ int main()
         }
     }else{
         cout << "\nOPCION NO VALIDA" << endl;
+    };
+    continuar = conti();
     };
     return 0;
 }
