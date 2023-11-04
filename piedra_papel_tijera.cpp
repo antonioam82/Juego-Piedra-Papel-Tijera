@@ -57,7 +57,7 @@ string enterOption(){
 bool conti(){
     string c;
     cout << "Desea continuar?: "; cin >> c;
-    if(c == "Y"){
+    if(c == "Y" || c == "y"){
         LimpiarPantalla();
         return true;
     }else{
@@ -66,11 +66,20 @@ bool conti(){
     };
 }
 
+void showScore(int v,int d,int e){
+    cout << "\n---------------PUNTUACION----------------" << endl;
+    cout << "VICTORIAS: " << v << " DERROTAS: " << d << " EMPATES: " << e << endl;
+    cout << "-----------------------------------------\n" << endl;
+};
+
 int main()
 {
     bool inclu;
     string opcion;
     string opcion_compu;
+    int victorias = 0;
+    int derrotas = 0;
+    int empates = 0;
     bool continuar = true;
 
     //opcion = enterOption();
@@ -85,19 +94,33 @@ int main()
         if(opcion != opcion_compu){
             if(opcion == "piedra" && opcion_compu == "papel"){
                 cout << "\nPERDISTE: papel envuelve piedra" << endl;
+                derrotas++;
+                showScore(victorias,derrotas,empates);
             }else if(opcion == "piedra" && opcion_compu == "tijera"){
                 cout << "\nGANASTE: piedra machaca tijera" << endl;
+                victorias++;
+                showScore(victorias,derrotas,empates);
             }else if(opcion == "papel" && opcion_compu == "piedra"){
                 cout << "\nGANASTE: papel envuelve piedra" << endl;
+                victorias++;
+                showScore(victorias,derrotas,empates);
             }else if(opcion == "papel" && opcion_compu == "tijera"){
                 cout << "\nPERDISTE: tijera corta papel" << endl;
+                derrotas++;
+                showScore(victorias,derrotas,empates);
             }else if(opcion == "tijera" && opcion_compu == "piedra"){
                 cout << "\nPERDISTE: piedra machaca tijera" << endl;
+                derrotas++;
+                showScore(victorias,derrotas,empates);
             }else{
                 cout << "\nGANASTE: tijera corta papel" << endl;
+                victorias++;
+                showScore(victorias,derrotas,empates);
             }
         }else{
             cout << "\nEMPATE" << endl;
+            empates++;
+            showScore(victorias,derrotas,empates);
         }
     }else{
         cout << "\nOPCION NO VALIDA" << endl;
