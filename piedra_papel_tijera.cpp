@@ -7,6 +7,12 @@
 
 using namespace std;
 
+void LimpiarPantalla(){
+	if(system("cls") == -1){
+		cout<<"Error al borrar la pantalla  :(";
+	}
+}
+
 string computerOption(){
     srand(static_cast<unsigned int>(time(nullptr)));
     //lista de palabras
@@ -43,7 +49,7 @@ bool included(string elemento){
 string enterOption(){
     bool esta;
     string option;
-    cout << "Piedra, Papel o tijera: "; cin >> option;
+    cout << "Piedra, Papel o Tijera: "; cin >> option;
 
     return option;
 }
@@ -52,6 +58,7 @@ bool conti(){
     string c;
     cout << "Desea continuar?: "; cin >> c;
     if(c == "Y"){
+        LimpiarPantalla();
         return true;
     }else{
         cout << "BYE, BYE..." << endl;
