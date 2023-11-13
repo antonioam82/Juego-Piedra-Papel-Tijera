@@ -57,11 +57,15 @@ string enterOption(){
 bool conti(){
     string c;
     cout << "Desea continuar?: "; cin >> c;
+    while(c != "Y" && c != "y" && c != "n" && c != "N"){
+        cout << "Opcion no valida" << endl;
+        cout << "Desea continuar?: "; cin >> c;
+    }
     if(c == "Y" || c == "y"){
         LimpiarPantalla();
         return true;
     }else{
-        cout << "BYE, BYE..." << endl;
+        cout << "\nBYE, BYE..." << endl;
         return false;
     };
 }
